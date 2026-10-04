@@ -4,7 +4,7 @@ import FormularioPersonas from './componentes/FormularioPersonas'
 import FilaPersona from './componentes/FilaPersona'
 
 function App() {
-  // ---------- ESTADOS DEL FORMULARIO ----------
+
   const [TipoDocumento, setTipoDoc] = useState("")
   const [Documento, setDocumento] = useState("")
   const [Nombre, setNombre] = useState("")
@@ -15,11 +15,11 @@ function App() {
   const [Correo, setCorreo] = useState("")
   const [edad, setEdad] = useState("")
 
-  // ---------- LISTA Y MENSAJE ----------
+
   const [Persona, setPersona] = useState([])
   const [Mensaje, setMensaje] = useState("")
 
-  // ---------- GET: cargar personas ----------
+ 
   async function cargarPersonas() {
     const respuesta = await fetch("http://localhost:3001/personas")
     const data = await respuesta.json()
@@ -30,7 +30,7 @@ function App() {
     cargarPersonas()
   }, [])
 
-  // ---------- POST / PUT: guardar ----------
+  
   async function gurdarPersonas() {
     const Personas = {
       TipoDocumento: TipoDocumento,
@@ -78,7 +78,7 @@ function App() {
     cargarPersonas()
   }
 
-  // ---------- Limpiar formulario ----------
+
   function limpiarCampos() {
     setTipoDoc("")
     setDocumento("")
@@ -91,7 +91,7 @@ function App() {
     setEdad("")
   }
 
-  // ---------- Editar: pasa los datos al formulario ----------
+ 
   function editar(persona) {
     setTipoDoc(persona.TipoDocumento)
     setDocumento(persona.Documento)
@@ -104,7 +104,7 @@ function App() {
     setEdad(persona.Edad)
   }
 
-  // ---------- DELETE ----------
+ 
   async function eliminarPersona(id) {
     const respuesta = await fetch(`http://localhost:3001/personas/${id}`, {
       method: "DELETE"
@@ -118,7 +118,6 @@ function App() {
     }
   }
 
-  // ---------- VISTA ----------
   return (
     <div>
       <h1>Registro de usuarios</h1>
